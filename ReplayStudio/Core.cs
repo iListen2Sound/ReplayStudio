@@ -129,7 +129,13 @@ public class Core : MelonMod
         LineTemplate = DDOL_GameObjects.transform.Find("LineTemplate").gameObject;
 
         InitializeCamera();
+
+
+        //Initial browser tests
+       
+        ReplayBrowser.ListReplays();
     }
+
 
     internal void OnReplayStarted(ReplayInfo _)
     {

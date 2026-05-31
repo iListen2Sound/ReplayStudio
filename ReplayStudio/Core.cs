@@ -132,10 +132,16 @@ public class Core : MelonMod
 
 
         //Initial browser tests
-       
         ReplayBrowser.ListReplays();
+       // MelonCoroutines.Start(DelayListReplays());
+       
     }
 
+    IEnumerator DelayListReplays()
+    {
+        yield return new WaitForSeconds(5f);
+
+    }
 
     internal void OnReplayStarted(ReplayInfo _)
     {

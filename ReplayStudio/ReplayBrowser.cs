@@ -16,27 +16,24 @@ internal static class ReplayBrowser
 	internal static ReplayExplorer explorer;
 	internal static void ListReplays()
 	{
-		explorer = ReplayFiles.explorer;
-
-		List<ReplayExplorer.Entry> entries = explorer.GetEntries();
-		for (int i = 0; i < entries.Count; i++)
+		List<ReplayExplorer.Entry> entries = (List<ReplayExplorer.Entry>)ReplayAPI.Entries;
+		foreach (ReplayExplorer.Entry entry in entries)
 		{
-
-			ReplayExplorer.Entry entry = entries[i];
+			if (entry.IsFolder)
+			{
+				Debug.Log("Entry is folder");
+				continue;
+			}
+			string lineToPrint = "";
 			try
 			{
-				Debug.Log($"{entry.Name}   {entry.header.Title}");
+				lineToPrint += entry.IsFolder + ", ";
+				lineToPrint += entry.Name + ", ";
+				lineToPrint += entry.header.Title + ", ";
+				lineToPrint += entry.header.Players[0].Name + ", ";
 			}
-			catch (Exception e)
-			{
-				Debug.Log(e.ToString() + e.StackTrace, false, 1);
-			}
-
-			if (entry.Name.Contains("Replay_iListen2Sound [BREEL]-vs-Kalamart_on_Pit_2026-05-29_03-56-48"))
-			{
-				explorer.Select(i);
-				break;
-			}
+			catch (Exception ex) { }
+			Debug.Log(lineToPrint);
 		}
 
 		Debug.Log(explorer.currentlySelectedEntry.Name);

@@ -32,13 +32,22 @@ internal static class ReplayBrowser
 				Debug.Log(e.ToString() + e.StackTrace, false, 1);
 			}
 
-			if (entry.Name.Contains("Replay_iListen2Sound [BREEL]-vs-Kalamart_on_Pit_2026-05-29_03-56-48"))
-			{
-				explorer.Select(i);
-				break;
-			}
+			// if (entry.Name.Contains("Replay_iListen2Sound [BREEL]-vs-Kalamart_on_Pit_2026-05-29_03-56-48"))
+			// {
+			// 	explorer.Select(i);
+			// 	break;
+			// }
 		}
 
 		Debug.Log(explorer.currentlySelectedEntry.Name);
 	}
+}
+
+internal static class Session
+{
+	internal string Opponent;
+	internal List<ReplayExplorer.Entry> Entries;
+	internal int MarkerCount;
+	internal DateTime Date;
+		
 }
